@@ -42,7 +42,7 @@ public class CentralTIU {
 	
 	/** Ending a rental process
 	 * @param aluguer the rental to be finished
-	 * @return OK, if everything went good
+	 * @return OK, if everything went well
 	 * <br> TROTINETE_EM_ANDAMENTO if the scooter is still running.
 	 */
 	//Finish Rent
