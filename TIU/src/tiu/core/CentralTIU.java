@@ -48,8 +48,6 @@ public class CentralTIU {
 	//Finish Rent
 	public int terminarAluguer(Aluguer aluguer) {
 		return OK;
-	}	
-	
-	int x = 10;
+	}
 }
 
