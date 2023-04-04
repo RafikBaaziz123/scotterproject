@@ -82,7 +82,7 @@ public class Trotinete {
 		return false;
 	}
 	
-	/** Place/retract the scooter under load
+	/** Place/retract the scooter under charging.
 	 * If the scooter is in use, it can NOT be charged
 	 * @param carga true to load
 	 * false to remove from the load

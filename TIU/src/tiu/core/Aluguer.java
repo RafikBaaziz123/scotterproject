@@ -26,7 +26,7 @@ public class Aluguer {
 		return null;
 	}
 	
-	/** returns the current cost of the rental.
+	/** returns the current cost of the rental
 	 * If the lease is terminated this is the total cost,
 	 * otherwise it represents the cost so far
 	 * @return the current cost of rent
@@ -35,7 +35,7 @@ public class Aluguer {
 		return 0;
 	}
 	
-	/** returns the distance traveled during the rental.
+	/** returns the distance traveled during the rental
 	 * If the rental is still running, returns the distance that has been traveled so far. 
 	 * @return the distance traveled during the rental
 	 */

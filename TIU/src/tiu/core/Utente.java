@@ -23,8 +23,7 @@ public class Utente {
 	}
 	
 	/** indicates if you are currently renting a scooter
-	 * @return true if you are renting, 
-	 * false otherwise
+	 * @return true if you are renting, false otherwise
 	 */
 	public boolean estaAlugar() {
 		return false;
