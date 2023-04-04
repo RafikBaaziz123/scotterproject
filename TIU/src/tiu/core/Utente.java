@@ -12,7 +12,7 @@ public class Utente {
 	/** The user has started a new lease. You should only accept
 	 * if you do not currently have any rentals, otherwise
 	 * should ignore the new lease
-	 * @param "alu" the lease started
+	 * @param alu the lease started
 	 */	
 	public void comecaAluguer(Aluguer alu) {
 	}

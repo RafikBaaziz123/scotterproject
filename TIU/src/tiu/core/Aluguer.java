@@ -26,7 +26,7 @@ public class Aluguer {
 		return null;
 	}
 	
-	/** returns the current cost of the rental.
+	/** returns the current cost of the rental
 	 * If the lease is terminated this is the total cost,
 	 * otherwise it represents the cost so far
 	 * @return the current cost of rent

@@ -3,89 +3,89 @@ package tiu.mobilidade;
 import tiu.core.Aluguer;
 
 /**
- * Classe que representa uma trotinete
- * Deve ter o código identificativo, se tem algum aluguer no momento,
- * uma lista de alugueres que já realizou, a autonomia,
- * a autonomia restante, a velocidade de deslocamento,
- * a distância total percorrida,
- * e a distância percorrida no aluguer atual.  
+ * Class that represents a scooter
+ * It must have the identifying code, 
+ * if it has any rentals at the moment a list of rentals it has already made, 
+ * the autonomy the remaining autonomy, 
+ * the travel speed the total distance traveled
+ * and the distance traveled in the current rental.  
  * 
  */
 public class Trotinete {
 
-	/** inicia um aluguer
-	 * @param alu o aluguer a começar
+	/** starts a rental
+	 * @param alu the rent to start
 	 */
 	public void iniciaAluguer(Aluguer alu) {
 	}
 	
-	/** termina o aluguer atual
+	/** the current rent ends
 	 * 
 	 */
 	public void terminaAluguer( ) {
 	}
 	
-	/** Coloca a trotinete em andamento
+	/** Start the scooter
 	 */
 	public void mover() {
 	}
 	
-	/** Pára a trotinete
+	/** Stop the scooter
 	 */
 	public void parar() {
 	}
 	
-	/** indica se a trotinete está em andamento
-	 * @return se a trotinete está em andamento
+	/** indicates whether the scooter is running
+	 * @return if the scooter is running
 	 */
 	public boolean emAndamento() {
 		return false;
 	}
 	
-	/** indica se a trotinete está em uso, isto é,
-	 * se está a ser alugada
-	 * @return se a trotinete está em uso
+	/** indicates whether the scooter is in use, that is,
+	 * if it is being rented
+	 * @return if the scooter is in use
 	 */
 	public boolean emUso() {
 		return false;
 	}
 
-	/** indica se a trotinete está em carga
-	 * @return se a trotinete está em carga
+	/** indicates whether the scooter is charging
+	 * @return if the scooter is charged
 	 */
 	public boolean emCarga() {
 		return false;
 	}
 	
-	/** Método chamado pelo sistema a cada segundo
-	 * para que a trotinete atualize o seu estado,
-	 * simulando assim o movimento ou carga da mesma
+	/** Method called by the system every second
+	 * for the scooter to update its state
+	 * thus simulating its movement or load
 	 */
 	public void atualizar() {
 	}
 
-	/** coloca/retira a trotinete da manutenção
-	 * @param indisponivel true para colocar em manutenção,
-	 * false para retirar da manutenção
+	/** put on/take off the maintenance scooter
+	 * @param indisponivel true to put into maintenance,
+	 * false to take out of maintenance
 	 */
 	public void setEmManutencao(boolean indisponivel) {
 	}
 	
-	/** indica se a trotinete está indisponível.
-	 * A trotinete está indisponível se:<br>
-	 *   - está em manutenção<br>
-	 *   - está a carregar<br>
-	 *   - se não está num aluguer e tem pouca autonomia<br>
-	 * @return se a trotinete está indisponível
+	/** indicates if the scooter is unavailable.
+	 * The scooter is unavailable if:<br>
+	 *   - is in maintenance<br>
+	 *   - is charging<br>
+	 *   - if it is not on a lease and has little autonomy<br>
+	 * @return if the scooter is unavailable
 	 */
 	public boolean estaIndisponivel() {
 		return false;
 	}
 	
-	/** Coloca/retira a trotinete em carga.
-	 * Se a trotinete está em uso NÃO pode ser colocada em carga
-	 * @param carga true para por a carregar e
-	 * false para retirar do carregamento
+	/** Place/retract the scooter under load.
+	 * If the scooter is in use, it can NOT be charged
+	 * @param carga true to load
+	 * false to remove from the load
 	 */
 	public void setEmCarga( boolean carga  ) {
 	}
