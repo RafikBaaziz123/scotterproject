@@ -1,29 +1,29 @@
 package tiu.core;
 
 /**
- * Classe que representa um utente do sistema
- * Um utente tem um user name e o seu nome, 
- * se tem algum aluguer no momento e uma lista
- * dos alugueres todos que já realizou. 
+ * Class that represents a user of the system
+  * A user has a user name and his name,
+  * if you currently have any rentals and a list
+  * of all rentals you have already made. 
  * 
  */
 public class Utente {
 	
-	/** O utente começou um novo aluguer. Só deve aceitar
-	 * se não tiver nenhum aluguer atualmente, caso contrário
-	 * deve ignorar o novo aluguer
-	 * @param alu o aluguer começado
-	 */
+	/** The user has started a new lease. You should only accept
+	 * if you do not currently have any rentals, otherwise
+	 * should ignore the new lease
+	 * @param "alu" the lease started
+	 */	
 	public void comecaAluguer(Aluguer alu) {
 	}
 	
-	/** Termina o aluguer atual.
+	/** Ends the current Rent.
 	 */
 	public void terminaAluguer() {
 	}
 	
-	/** indica se está atualmente a alugar alguma trotinete
-	 * @return true se está a alugar, false caso contrário
+	/** indicates if you are currently renting a scooter
+	 * @return true if you are renting, false otherwise
 	 */
 	public boolean estaAlugar() {
 		return false;

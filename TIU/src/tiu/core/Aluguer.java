@@ -3,43 +3,41 @@ package tiu.core;
 import java.time.Duration;
 
 /**
- * Classe que representa um aluguer no sistema.
- * O aluguer deve ter a data de inicio (LocalDateTime)
- * o utente que fez o aluguer, a trotinete que foi alugada
- * e, caso tenha terminado, deve ter ainda a data de fim,
- * o custo e a distância percorrida
+ * Class representing a rental in the system.
+ * The rental must have the start date (LocalDateTime)
+ * the user that made the rental, the scooter that was rented
+ * and, if it has finished, it must also have an end date,
+ * the cost and distance traveled
  */
 public class Aluguer {
 	
-	/** método responsável por terminar o aluguer
+	/** method responsible for terminating the rent
 	 */
 	public void terminar() {
 	}
 
-	/** Indica a duração do aluguer. Se o aluguer já
-	 * tiver terminado, retorna a duração total do aluguer.
-	 * Se o aluguer ainda estiver a decorrer, deve retornar
-	 * a duração atual do aluguer
+	/** Indicates the duration of the rental. If the rental has
+	 * has ended, returns the total length of the rental.
+	 * If the rental is still ongoing, it will return the current duration of the rental
 	 * 
-	 * @return a duração do aluguer
+	 * @return the rental duration
 	 */
 	public Duration getDuracao( ) {
 		return null;
 	}
 	
-	/** retorna o custo atual do aluguer.
-	 * Se o aluguer esiver terminado este é o custo total,
-	 * senão representa o custo até ao momento
-	 * @return o custo atual do aluguer
+	/** returns the current cost of the rental.
+	 * If the lease is terminated this is the total cost,
+	 * otherwise it represents the cost so far
+	 * @return the current cost of rent
 	 */
 	public float getCusto() {
 		return 0;
 	}
 	
-	/** retorna a distância percorrida durante o aluguer
-	 * Se o aluguer ainda estiver a decorrer, retorna a
-	 * distância que foi percorrida até ao momento. 
-	 * @return a distância percorrida durante o aluguer
+	/** returns the distance traveled during the rental
+	 * If the rental is still running, returns the distance that has been traveled so far. 
+	 * @return the distance traveled during the rental
 	 */
 	public int getDistancia() {
 		return 0;
