@@ -57,8 +57,7 @@ public class Trotinete {
 		return false;
 	}
 	
-	/** Method called by the system every second
-	 * for the scooter to update its state
+	/** Method called by the system every second for the scooter to update its state
 	 * thus simulating its movement or load
 	 */
 	public void atualizar() {

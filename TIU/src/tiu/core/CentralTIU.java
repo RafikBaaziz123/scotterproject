@@ -6,7 +6,7 @@ package tiu.core;
  */
 public class CentralTIU {
 
-	// definition of the costants for the various error cases
+	//definition of the costants for the various error cases
 	public static final int OK = 0;
 	//UNKNOWN SCOOTER = 1
 	public static final int TROTINETE_DESCONHECIDA = 1;
