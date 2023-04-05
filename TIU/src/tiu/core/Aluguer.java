@@ -61,6 +61,36 @@ public class Aluguer {
 	public int getDistancia() {
 		return this.scooter.getDistanceTraveled();
 	}
+
+	public Utente getUser() {
+		return user;
+	}
+
+	public void setUser(Utente user) {
+		this.user = user;
+	}
+
+	public Trotinete getScooter() {
+		return scooter;
+	}
+
+	public void setScooter(Trotinete scooter) {
+		this.scooter = scooter;
+	}
+
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public Aluguer(Utente user, Trotinete scooter) {
+		this.user = user;
+		this.scooter = scooter;
+		this.setStartTime(LocalDateTime.now());
+	}
 	
 	
 }
