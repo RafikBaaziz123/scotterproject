@@ -1,6 +1,9 @@
 package tiu.core;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+
+import tiu.mobilidade.Trotinete;
 
 /**
  * Class representing a rental in the system.
@@ -11,9 +14,20 @@ import java.time.Duration;
  */
 public class Aluguer {
 	
+	//Attributes declaration.
+	private Utente user;
+	private Trotinete scooter;
+	private LocalDateTime startTime, finishTime;
+	private int distanceTraveled;
+	private float cost;
+	
+	
 	/** method responsible for terminating the rent
 	 */
 	public void terminar() {
+		this.user.terminaAluguer();
+		this.scooter.terminaAluguer();
+		this.finishTime = LocalDateTime.now();
 	}
 
 	/** Indicates the duration of the rental. If the rental has
@@ -23,7 +37,11 @@ public class Aluguer {
 	 * @return the rental duration
 	 */
 	public Duration getDuracao( ) {
-		return null;
+		if(this.startTime != null && this.finishTime != null) {
+			return Duration.between(this.startTime, this.finishTime);
+		}else {
+			return Duration.between(this.startTime, LocalDateTime.now());
+		}
 	}
 	
 	/** returns the current cost of the rental
@@ -32,7 +50,8 @@ public class Aluguer {
 	 * @return the current cost of rent.
 	 */
 	public float getCusto() {
-		return 0;
+		double minutes = this.getDuracao().toMinutes();
+		return (float) ((float)(minutes * 0.15) + 0.5);
 	}
 	
 	/** returns the distance traveled during the rental
@@ -40,6 +59,8 @@ public class Aluguer {
 	 * @return the distance traveled during the rental
 	 */
 	public int getDistancia() {
-		return 0;
+		return this.scooter.getDistanceTraveled();
 	}
+	
+	
 }
