@@ -26,7 +26,7 @@ public class Trotinete {
 	final private int speed;
 	private int totalDistanceTraveled;
 	private int distanceTraveled;
-	private boolean charged;
+	private boolean charging;
 	private boolean maintenance;
 	private Aluguer currentRental;
 
