@@ -79,6 +79,44 @@ public class CentralTIU {
 			this.rentalsList.add(r);
 			return OK;
 		}
-	}	
+	}
+	
+	// Getters and Setters
+
+	public ArrayList<User> getUsersList() {
+		return usersList;
+	}
+	
+	public void addUser(User user) {
+		this.usersList.add(user);
+	}
+	
+	public void removeUser(User user) {
+		this.usersList.remove(user);
+	}
+
+	public ArrayList<Scooter> getScootersList() {
+		return scootersList;
+	}
+	
+	public void addScooter(Scooter scooter) {
+		this.scootersList.add(scooter);
+	}
+	
+	public void removeScooter(Scooter scooter) {
+		this.scootersList.remove(scooter);
+	}
+
+	public ArrayList<Rental> getRentalsList() {
+		return rentalsList;
+	}
+	
+	public void addRental(Rental rental) {
+		this.rentalsList.add(rental);
+	}
+	
+	public void removerRental(Rental rental) {
+		this.rentalsList.remove(rental);
+	}
 }
 

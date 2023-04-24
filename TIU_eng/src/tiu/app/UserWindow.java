@@ -44,8 +44,8 @@ public class UserWindow extends JDialog {
 	 * @throws HeadlessException
 	 */
 	public UserWindow( JFrame owner, CentralTIU c, User u ) throws HeadlessException {
-		// TODO replace "USER NAME" with the full user name
-		super( owner, "USER NAME" );
+		// TODO replace "USER NAME" with the full user name (DONE)
+		super( owner, u.getUsername() );
 		central = c;
 		user = u;
 		setupInterface();
@@ -87,8 +87,8 @@ public class UserWindow extends JDialog {
 	 */
 	protected void terminateRental() {
 		// ask the central to terminate the rental process
-		// TODO null must be replaced with the correct value
-		int res = central.terminateRental( null );
+		// TODO null must be replaced with the correct value (DONE)
+		int res = central.terminateRental( user.getCurrentRental() );
 		if( res != CentralTIU.OK ) {
 			switch( res ) {
 			case CentralTIU.SCOOTER_MOVING:
@@ -107,9 +107,9 @@ public class UserWindow extends JDialog {
 	/** called to update the info in the window. Is is called once per second
 	 */
 	protected void atualizarDisplay() {
-		// TODO fill with the correct values
-		Duration duration = null;
-		float cost = 0;
+		// TODO fill with the correct values (DONE)
+		Duration duration = user.getCurrentRental().getDuration();
+		float cost = user.getCurrentRental().getCost();
 		
 		// update the interface
 		updateTime( duration.toHoursPart(), duration.toMinutesPart(), duration.toSecondsPart() );

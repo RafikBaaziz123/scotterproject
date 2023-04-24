@@ -107,9 +107,9 @@ public class Scooter {
 	 * false to remove from maintenance
 	 */
 	public void setInMaintenance(boolean maintain) {
-		if(!this.inUse()) {
-			this.terminateRental();
-		}
+//		if(!this.inUse()) {
+//			this.terminateRental();
+//		}
 		this.underMaintenance = maintain;
 	}
 	
@@ -204,11 +204,28 @@ public class Scooter {
 		this.previousRentals.remove(e);
 	}
 	
+	public boolean isUnderMaintenance() {
+		return underMaintenance;
+	}
+
+	public void setUnderMaintenance(boolean underMaintenance) {
+		this.underMaintenance = underMaintenance;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setMoving(boolean moving) {
+		this.moving = moving;
+	}
+
 	// Constructor.
-	public Scooter(String id, Rental currentRental, int speed) {
+	public Scooter(String id, int autonomy, int remainingAutonomy, int speed) {
 		super();
 		this.id = id;
-		this.currentRental = currentRental;
+		this.autonomy = autonomy;
+		this.remainingAutonomy = remainingAutonomy;
 		this.speed = speed;
 	}
 }

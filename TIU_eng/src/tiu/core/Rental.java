@@ -50,8 +50,14 @@ public class Rental {
 	 * @return the cost of the rental (total or at the moment)
 	 */
 	public float getCost() {
-		float durationInMinutes = this.getDuration().toMinutes();
-		return (float) ((durationInMinutes * 0.15) + 0.5);
+		if(this.startingTime != null) {
+			float durationInMinutes = this.getDuration().toMinutes();
+			if(this.finishTime != null) {
+				return (float) (durationInMinutes * 0.15);
+			}
+			return (float) ((durationInMinutes * 0.15) + 0.50);
+		}
+		return 0;
 	}
 	
 	/** Returns the total distance traveled.

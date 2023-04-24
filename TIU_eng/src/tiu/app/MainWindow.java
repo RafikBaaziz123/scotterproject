@@ -59,18 +59,18 @@ public class MainWindow extends JFrame {
 		central = c;
 		setupInterface();	
 		
-		// TODO for each user, place the his/her information in the table
-		for( int i = 0; i < 0; i++ )
-			updateUserData( null );
+		// TODO for each user, place the his/her information in the table (DONE)
+		for( int i = 0; central.getUsersList().size() < 0; i++ )
+			updateUserData( central.getUsersList().get(i) );
 	}
 	
 	/** Method that is called whenever the user interface needs to be updated 
 	 */
 	protected void updateInterface() {
 		// TODO for each scooter we need to see if it is being used or
-		//      is inactive to decide in which table to put it
-		for( int i=0; i < 0; i++ ) {
-			Scooter s = null;
+		//      is inactive to decide in which table to put it (DONE)
+		for( int i=0; i < central.getScootersList().size(); i++ ) {
+			Scooter s = central.getScootersList().get(i);
 			if( s.inUse() )
 				updateInUse( s );
 			else
@@ -87,15 +87,15 @@ public class MainWindow extends JFrame {
 	 * @param s the scooter to add to the table
 	 */
 	private void updateInUse( Scooter s ) {
-		// TODO put the correct values on the variables
-		String code = "Code";
-		int range = 20000;
-		int speed = 7;
-		Rental r = null;
-		LocalDateTime begin = null;
+		// TODO put the correct values on the variables (DONE)
+		String code = s.getId();
+		int range = s.getAutonomy();
+		int speed = s.getSpeed();
+		Rental r = s.getCurrentRental();
+		LocalDateTime begin = r.getStartingTime();
 		String dh = getDateHour( begin );
-		float cost = 0;
-		int dist = 0;
+		float cost = r.getCost();
+		int dist = r.getDistance();
 		String moving = s.isMoving()? "Moving": "Stopped";
 		
 		// update the interface
@@ -108,10 +108,10 @@ public class MainWindow extends JFrame {
 	 * @param s the scooter to add to the table
 	 */
 	private void updateIdle(Scooter s) {
-		// TODO put the correct values on the variables
-		String cod = "code";
-		int range = 8500;
-		int speed = 6;
+		// TODO put the correct values on the variables (DONE)
+		String cod = s.getId();
+		int range = s.getAutonomy();
+		int speed = s.getSpeed();
 
 		// updates the interface
 		Object data[] = {cod, range, speed, s.isCharging(), s.isUnavailable() };
@@ -123,7 +123,19 @@ public class MainWindow extends JFrame {
 	 * @param charging true if is to charge, or false if is to remove from charging
 	 */
 	protected void putScooterCharging(String scooterCode, boolean charging) {
-		// TODO implement this method
+		// TODO implement this method (DONE)
+		boolean test = false;
+		int i = 0;
+		Scooter currentScooter = null;
+		while (!test) {
+			if(this.central.getScootersList().get(i).getId().equals(scooterCode)){
+				test = true;
+				currentScooter = this.central.getScootersList().get(i);
+			}else {
+				i++;
+			}
+		}
+		currentScooter.setCharging(charging);
 	}
 
 	/** method called when a scooter is put under (or removed from) maintenance
@@ -131,16 +143,28 @@ public class MainWindow extends JFrame {
 	 * @param charging true is is to charge, or false if is to remove from charging
 	 */
 	protected void putScooterUnderMaintenance(String scooterCode, boolean maintain) {
-		// TODO implement this method
+		// TODO implement this method (DONE)
+		boolean test = false;
+		int i = 0;
+		Scooter currentScooter = null;
+		while (!test) {
+			if(this.central.getScootersList().get(i).getId().equals(scooterCode)){
+				test = true;
+				currentScooter = this.central.getScootersList().get(i);
+			}else {
+				i++;
+			}
+		}
+		currentScooter.setInMaintenance(maintain);
 	}
 	
 	/** Called when is it necessary to update user data in the user table
 	 * @param u user info to be updated
 	 */
 	private void updateUserData(User u) {
-		// TODO put the correct values in the variables
-		String userName = "username";
-		String name = "full name";
+		// TODO put the correct values in the variables (DONE)
+		String userName = u.getUsername();
+		String name = u.getName();
 		
 		// update the interface
 		Object data[] = {userName, name };
@@ -151,26 +175,37 @@ public class MainWindow extends JFrame {
 	/** method called to update the selected user info 
 	 */
 	private void updateSelectedUserInfo() {
-		// TODO put the correct values in the variables
-		String userName = "username";
-		String name = "full name";
+		// TODO put the correct values in the variables (DONE)
+		String userName = selectedUser.getUsername();
+		String name = selectedUser.getName();
 
 		// update the interface
 		rentalModel.setRowCount( 0 );
 		userLbl.setText( userName );
 		nameLbl.setText( name );
 		
-		// TODO for each rental update the table
-		for( int i = 0; i < 0; i++ )
-			displayRental( null );
+		// TODO for each rental update the table (DONE)
+		for( int i = 0; i < selectedUser.getPreviousRentals().size(); i++ )
+			displayRental( selectedUser.getPreviousRentals().get(i) );
 	}
 	
 	/** called when a user is selected 
 	 * @param user the username of the selected user
 	 */
 	protected void userSelection(String user) {
-		// TODO change the selected user
-		selectedUser = null;
+		// TODO change the selected user (DONE)
+		boolean test = false;
+		int i = 0;
+		User u = null;
+		while (!test) {
+			if(this.central.getUsersList().get(i).getUsername().equals(user)){
+				test = true;
+				u = this.central.getUsersList().get(i);
+			}else {
+				i++;
+			}
+		}
+		selectedUser = u;
 	}
 
 	/** Called when the "New user" button is pressed
@@ -184,26 +219,46 @@ public class MainWindow extends JFrame {
 		String username = data[0];
 		String name = data[1];
 
-		// TODO check if data is correct
+		// TODO check if data is correct (DONE)
 		//      username must be unique and non null
 		//      name cannot be empty or null
+		boolean ok = false;
+		int i = 0;
+		if((name.isEmpty() || name == null) && username == null) {
+			ok = false;
+		}else {
+			boolean test = false;
+			while (!test) {
+				if(this.central.getUsersList().get(i).getUsername().equals(username)){
+					test = true;
+				}else {
+					i++;
+				}
+			}
+			if(!test) {
+				ok = true;
+			}
+		}
 		
-		// TODO create the user and add it to the system
-		
-		// TODO update the interface with the new user
-		updateUserData( null );
+		// TODO create the user and add it to the system (DONE)
+		if(ok) {
+			User user = new User(username, name);
+			central.addUser(user);
+			// TODO update the interface with the new user (DONE)
+			updateUserData( user );
+		}
 	}
 	
 	/** Called when a rental info must be updated in the rental table
 	 * @param r the rental to add to the table
 	 */
 	private void displayRental(Rental r) {
-		// TODO put the correct values in the variables
-		String start = getDateHour( null /* rental start date */ );
-		String end = getDateHour( null /* rental finish date */ );
-		int distance = 0;
-		float cost = 0;
-		String scooterCode = "Code";
+		// TODO put the correct values in the variables (DONE)
+		String start = getDateHour( r.getStartingTime() /* rental start date */ );
+		String end = getDateHour( r.getFinishTime() /* rental finish date */ );
+		int distance = r.getDistance();
+		float cost = r.getCost();
+		String scooterCode = r.getScooter().getId();
 		
 		// update the interface
 		Object rowData[] = { start, end, distance, cost, scooterCode };

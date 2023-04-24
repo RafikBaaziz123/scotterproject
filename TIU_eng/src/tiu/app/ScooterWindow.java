@@ -42,10 +42,10 @@ public class ScooterWindow extends JDialog {
 	 * @param s scooter that is simulated by this window
 	 */
 	public ScooterWindow( JFrame owner, Scooter s ) {
-		// TODO replace "SCOOTER CODE" for its correct value
-		super( owner, "SCOOTER CODE" );
+		// TODO replace "SCOOTER CODE" for its correct value (DONE)
+		super( owner, s.getId() );
 		scooter = s;
-		setupInterface( "SCOOTER CODE" );
+		setupInterface( s.getId() );
 	}
 
 	/** Called to update the interface (it is called once per second)
@@ -60,10 +60,10 @@ public class ScooterWindow extends JDialog {
 			if( !isInUse )
 				changeToInUse();
 			
-			// TODO put the correct values into the variables
-			Duration duration = null;
-			int distance = 0; 
-			int remainingRange = 8500;
+			// TODO put the correct values into the variables (DONE)
+			Duration duration = scooter.getCurrentRental().getDuration();
+			int distance = scooter.getDistanceTraveled(); 
+			int remainingRange = scooter.getRemainingAutonomy();
 
 			// update the interface
 			updateTime( duration.toHoursPart(), duration.toMinutesPart(), duration.toSecondsPart() );
@@ -76,13 +76,15 @@ public class ScooterWindow extends JDialog {
 	/** Called when the move/stop button is pressed
 	 */
 	protected void processarMover() {
-		// TODO if it is moving then it must stop (and change the button to move)
-		if( Math.abs( 2 ) == 2 ) {
+		// TODO if it is moving then it must stop (and change the button to move) (DONE)
+		if( scooter.isMoving() ) {
 			// ...
+			scooter.stop();
 			moveBt.setText( "Move" );
 		} else {
-		// TODO otherwise it must move (and change the button to stop) 
+		// TODO otherwise it must move (and change the button to stop) (DONE)
 			// ...
+			scooter.move();
 			moveBt.setText( "Stop" );
 		}			
 	}

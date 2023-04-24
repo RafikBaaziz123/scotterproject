@@ -83,5 +83,12 @@ public class User {
 	public void removeRental(Rental e) {
 		this.previousRentals.remove(e);
 	}
+
+	// Constructor 
+	public User(String username, String name) {
+		super();
+		this.username = username;
+		this.name = name;
+	}
 	
 }
