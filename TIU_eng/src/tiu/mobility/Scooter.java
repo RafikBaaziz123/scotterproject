@@ -48,10 +48,6 @@ public class Scooter {
 	public void move() {
 		if(this.currentRental != null) {
 			this.moving = true;
-			this.autonomy += this.speed;
-			this.distanceTraveled += this.speed;
-			this.totalDistance += this.speed;
-			this.remainingAutonomy -= this.speed;
 		}
 	}
 	
@@ -99,7 +95,11 @@ public class Scooter {
 	 * (distance, range, etc)
 	 */
 	public void update() {
-		this.move();
+		if(this.isMoving()) {
+			this.totalDistance += this.speed;
+			this.distanceTraveled += this.speed;
+			this.remainingAutonomy -= this.speed;
+		}
 	}
 
 	/** places the scooter under maintenance or removes it from maintenance
@@ -107,10 +107,10 @@ public class Scooter {
 	 * false to remove from maintenance
 	 */
 	public void setInMaintenance(boolean maintain) {
-//		if(!this.inUse()) {
-//			this.terminateRental();
-//		}
 		this.underMaintenance = maintain;
+		if(!this.inUse()) {
+			this.terminateRental();
+		}
 	}
 	
 	/** Tell if the scooter is unvailable
@@ -121,7 +121,7 @@ public class Scooter {
 	 * @return true if it is unavailable
 	 */
 	public boolean isUnavailable() {
-		if(this.inUse()) {
+		if(!this.inUse()) {
 			if(this.isCharging() || this.underMaintenance == true || this.remainingAutonomy <= 500) {
 				return true;
 			} else {

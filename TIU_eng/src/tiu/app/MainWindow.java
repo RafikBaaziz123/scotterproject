@@ -60,7 +60,7 @@ public class MainWindow extends JFrame {
 		setupInterface();	
 		
 		// TODO for each user, place the his/her information in the table (DONE)
-		for( int i = 0; central.getUsersList().size() < 0; i++ )
+		for( int i = 0; i < central.getUsersList().size(); i++ )
 			updateUserData( central.getUsersList().get(i) );
 	}
 	
@@ -89,13 +89,13 @@ public class MainWindow extends JFrame {
 	private void updateInUse( Scooter s ) {
 		// TODO put the correct values on the variables (DONE)
 		String code = s.getId();
-		int range = s.getAutonomy();
+		int range = s.getRemainingAutonomy();
 		int speed = s.getSpeed();
 		Rental r = s.getCurrentRental();
 		LocalDateTime begin = r.getStartingTime();
 		String dh = getDateHour( begin );
 		float cost = r.getCost();
-		int dist = r.getDistance();
+		int dist = s.getDistanceTraveled();
 		String moving = s.isMoving()? "Moving": "Stopped";
 		
 		// update the interface
@@ -110,7 +110,7 @@ public class MainWindow extends JFrame {
 	private void updateIdle(Scooter s) {
 		// TODO put the correct values on the variables (DONE)
 		String cod = s.getId();
-		int range = s.getAutonomy();
+		int range = s.getRemainingAutonomy();
 		int speed = s.getSpeed();
 
 		// updates the interface
@@ -123,7 +123,7 @@ public class MainWindow extends JFrame {
 	 * @param charging true if is to charge, or false if is to remove from charging
 	 */
 	protected void putScooterCharging(String scooterCode, boolean charging) {
-		// TODO implement this method (DONE)
+		// TODO implement this method (Missing the loop)
 		boolean test = false;
 		int i = 0;
 		Scooter currentScooter = null;
@@ -135,6 +135,7 @@ public class MainWindow extends JFrame {
 				i++;
 			}
 		}
+		currentScooter.setRemainingAutonomy(currentScooter.getRemainingAutonomy() + 20);
 		currentScooter.setCharging(charging);
 	}
 

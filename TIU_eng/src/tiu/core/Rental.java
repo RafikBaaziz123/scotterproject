@@ -67,7 +67,7 @@ public class Rental {
 	 * @return the distance traveled (total or at the moment)
 	 */
 	public int getDistance() {
-		return this.scooter.getAutonomy();
+		return this.distanceTraveled;
 	}
 
 	// Getters and Setters.
