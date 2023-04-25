@@ -218,36 +218,40 @@ public class MainWindow extends JFrame {
 			return;
 		
 		String username = data[0];
+		//System.out.println(username);
 		String name = data[1];
+		//System.out.println(name);
 
 		// TODO check if data is correct (DONE)
 		//      username must be unique and non null
 		//      name cannot be empty or null
 		boolean ok = false;
 		int i = 0;
-		if((name.isEmpty() || name == null) && username == null) {
-			ok = false;
-		}else {
+		if(!(name.isEmpty())) {
+			//System.out.println(name);
 			boolean test = false;
-			while (!test) {
+			while (!test && i<this.central.getUsersList().size()) {
+//				System.out.println(name);
+//				System.out.println(this.central.getUsersList().get(i).getUsername());
 				if(this.central.getUsersList().get(i).getUsername().equals(username)){
 					test = true;
 				}else {
 					i++;
 				}
 			}
-			if(!test) {
-				ok = true;
+			if(test) {
+				return;
 			}
 		}
+		//System.out.print(ok);
 		
-		// TODO create the user and add it to the system (DONE)
-		if(ok) {
-			User user = new User(username, name);
-			central.addUser(user);
-			// TODO update the interface with the new user (DONE)
-			updateUserData( user );
-		}
+		// TODO create the user and add it to the system (Didn't add to the system)
+		User user = new User(username, name);
+		this.central.addUser(user);
+		
+		
+		// TODO update the interface with the new user (DONE)
+		updateUserData( user );
 	}
 	
 	/** Called when a rental info must be updated in the rental table
