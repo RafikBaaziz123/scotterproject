@@ -17,7 +17,6 @@ public class Rental {
 	private LocalDateTime startingTime, finishTime;
 	private User user;
 	private Scooter scooter;
-	private float cost;
 	private int distanceTraveled;
 	
 	/** terminates the rental
@@ -34,13 +33,10 @@ public class Rental {
 	 * @return the duration of the rental (total or at the moment)
 	 */
 	public Duration getDuration( ) {
-		if(this.startingTime != null) {
-			if(this.finishTime != null) {
-				return Duration.between(this.startingTime, this.finishTime);
-			}
+		if(this.user != null && this.scooter != null) {
 			return Duration.between(this.startingTime, LocalDateTime.now());
 		}
-		return null;
+		return Duration.between(this.startingTime, this.finishTime);
 	}
 	
 	/** returns the total cost.
@@ -50,14 +46,8 @@ public class Rental {
 	 * @return the cost of the rental (total or at the moment)
 	 */
 	public float getCost() {
-		if(this.startingTime != null) {
-			float durationInMinutes = this.getDuration().toMinutes();
-			if(this.finishTime != null) {
-				return (float) (durationInMinutes * 0.15);
-			}
-			return (float) ((durationInMinutes * 0.15) + 0.50);
-		}
-		return 0;
+		float durationInMinutes = this.getDuration().toMinutes();
+		return (float) (((durationInMinutes + 1) * 0.15) + 0.50);
 	}
 	
 	/** Returns the total distance traveled.
@@ -101,6 +91,10 @@ public class Rental {
 
 	public void setScooter(Scooter scooter) {
 		this.scooter = scooter;
+	}
+	
+	public void setDistance(int distance) {
+		this.distanceTraveled = distance;
 	}
 
 	// Constructor.

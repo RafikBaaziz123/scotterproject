@@ -95,7 +95,7 @@ public class MainWindow extends JFrame {
 		LocalDateTime begin = r.getStartingTime();
 		String dh = getDateHour( begin );
 		float cost = r.getCost();
-		int dist = s.getDistanceTraveled();
+		int dist = s.getCurrentRental().getDistance();
 		String moving = s.isMoving()? "Moving": "Stopped";
 		
 		// update the interface
@@ -135,7 +135,6 @@ public class MainWindow extends JFrame {
 				i++;
 			}
 		}
-		currentScooter.setRemainingAutonomy(currentScooter.getRemainingAutonomy() + 20);
 		currentScooter.setCharging(charging);
 	}
 

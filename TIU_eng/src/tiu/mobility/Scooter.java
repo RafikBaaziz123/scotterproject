@@ -20,6 +20,7 @@ public class Scooter {
 	private int autonomy, remainingAutonomy, distanceTraveled, totalDistance;
 	private final int speed;
 	private boolean charging, underMaintenance, moving;
+	public static final int CHARGIN_SPEED = 400;
 
 	/** starts a rental
 	 * @param r the rental to start
@@ -97,8 +98,17 @@ public class Scooter {
 	public void update() {
 		if(this.isMoving()) {
 			this.totalDistance += this.speed;
+			this.currentRental.setDistance(this.currentRental.getDistance() + this.speed);
 			this.distanceTraveled += this.speed;
 			this.remainingAutonomy -= this.speed;
+		} else if(this.isCharging()) {
+			if(this.remainingAutonomy < this.autonomy) {
+				if((this.remainingAutonomy + this.CHARGIN_SPEED) <= this.autonomy) {
+					this.remainingAutonomy += this.CHARGIN_SPEED;
+				}else {
+					this.remainingAutonomy = this.autonomy;
+				}
+			}
 		}
 	}
 
@@ -221,11 +231,10 @@ public class Scooter {
 	}
 
 	// Constructor.
-	public Scooter(String id, int autonomy, int remainingAutonomy, int speed) {
+	public Scooter(String id, int autonomy, int speed) {
 		super();
 		this.id = id;
 		this.autonomy = autonomy;
-		this.remainingAutonomy = remainingAutonomy;
 		this.speed = speed;
 	}
 }

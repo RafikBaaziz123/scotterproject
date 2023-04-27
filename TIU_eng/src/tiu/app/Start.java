@@ -54,19 +54,25 @@ public class Start {
 		central.addUser(u3);
 		User u4 = new User( "aziz.zina@ipcbcampus.pt", "Aziz Zina" );
 		central.addUser(u4);
+		User u5 = new User( "baaziz.rafik@ipcbcampus.pt", "Rafik Baaziz" );
+		central.addUser(u5);
 		
 		// TODO create scooters (DONE)
-		Scooter s1 = new Scooter( "PooTr1", 20000, 1000, 5 );
+		Scooter s1 = new Scooter( "PooTr1", 20000, 5 );
 		central.addScooter(s1);
-		Scooter s2 = new Scooter( "PooTr2", 20000, 20000, 5 );
+		Scooter s2 = new Scooter( "PooTr2", 20000, 5 );
 		central.addScooter(s2);
-		Scooter s3 = new Scooter( "PooGo", 30000, 8000, 6 );
+		Scooter s3 = new Scooter( "PooGo", 30000, 6 );
 		central.addScooter(s3);
-		Scooter s4 = new Scooter( "Poo20", 30000, 30000, 7 );
+		Scooter s4 = new Scooter( "Poo20", 30000, 7 );
 		central.addScooter(s4);
 		
 		
-		// TODO setup remaining range for the scooters
+		// TODO setup remaining range for the scooters (We don't know what to do exactly!)
+		s1.setRemainingAutonomy(400);
+		s2.setRemainingAutonomy(20000);
+		s3.setRemainingAutonomy(8000);
+		s4.setRemainingAutonomy(30000);
 	
 		return central;
 	}

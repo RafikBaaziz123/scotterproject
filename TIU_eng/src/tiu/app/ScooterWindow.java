@@ -62,7 +62,7 @@ public class ScooterWindow extends JDialog {
 			
 			// TODO put the correct values into the variables (DONE)
 			Duration duration = scooter.getCurrentRental().getDuration();
-			int distance = scooter.getDistanceTraveled(); 
+			int distance = scooter.getCurrentRental().getDistance(); 
 			int remainingRange = scooter.getRemainingAutonomy();
 
 			// update the interface
