@@ -33,7 +33,7 @@ public class Rental {
 	 * @return the duration of the rental (total or at the moment)
 	 */
 	public Duration getDuration( ) {
-		if(this.user != null && this.scooter != null) {
+		if(this.user.getCurrentRental() != null && this.scooter.getCurrentRental() != null) {
 			return Duration.between(this.startingTime, LocalDateTime.now());
 		}
 		return Duration.between(this.startingTime, this.finishTime);

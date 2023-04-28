@@ -58,7 +58,7 @@ public class Start {
 		central.addUser(u5);
 		
 		// TODO create scooters (DONE)
-		Scooter s1 = new Scooter( "PooTr1", 20000, 5 );
+		Scooter s1 = new Scooter( "PooTr1", 20000, 130 );
 		central.addScooter(s1);
 		Scooter s2 = new Scooter( "PooTr2", 20000, 5 );
 		central.addScooter(s2);

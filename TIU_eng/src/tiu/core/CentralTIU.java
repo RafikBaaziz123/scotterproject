@@ -38,7 +38,7 @@ public class CentralTIU {
 		boolean test = false;
 		int i = 0;
 		Scooter currentScooter = null;
-		while (!test) {
+		while (!test && i < this.scootersList.size()) {
 			if(this.scootersList.get(i).getId().equals(code)){
 				test = true;
 				currentScooter = this.scootersList.get(i);

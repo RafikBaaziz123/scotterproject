@@ -29,7 +29,7 @@ public class User {
 	/** Terminates the current rental.
 	 */
 	public void terminateRental() {
-		if(this.getCurrentRental() != null) {
+		if(this.isRenting()) {
 			this.addRental(this.currentRental);
 			this.setCurrentRental(null);
 		}

@@ -127,7 +127,7 @@ public class MainWindow extends JFrame {
 		boolean test = false;
 		int i = 0;
 		Scooter currentScooter = null;
-		while (!test) {
+		while (!test && i <= this.central.getScootersList().size()) {
 			if(this.central.getScootersList().get(i).getId().equals(scooterCode)){
 				test = true;
 				currentScooter = this.central.getScootersList().get(i);
@@ -147,7 +147,7 @@ public class MainWindow extends JFrame {
 		boolean test = false;
 		int i = 0;
 		Scooter currentScooter = null;
-		while (!test) {
+		while (!test && i <= this.central.getScootersList().size()) {
 			if(this.central.getScootersList().get(i).getId().equals(scooterCode)){
 				test = true;
 				currentScooter = this.central.getScootersList().get(i);
@@ -197,7 +197,7 @@ public class MainWindow extends JFrame {
 		boolean test = false;
 		int i = 0;
 		User u = null;
-		while (!test) {
+		while (!test && i < this.central.getUsersList().size()) {
 			if(this.central.getUsersList().get(i).getUsername().equals(user)){
 				test = true;
 				u = this.central.getUsersList().get(i);

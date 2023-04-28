@@ -28,6 +28,7 @@ public class Scooter {
 	public void startRental(Rental r) {
 		if(!this.isUnavailable()) {
 			if(this.getRemainingAutonomy() > 500) {
+				this.distanceTraveled = 0;
 				this.setCurrentRental(r);
 			}
 		}
@@ -37,7 +38,7 @@ public class Scooter {
 	 * 
 	 */
 	public void terminateRental( ) {
-		if(this.getCurrentRental() != null) {
+		if(this.inUse()) {
 			this.addRental(this.currentRental);
 			this.setCurrentRental(null);
 			this.moving = false;
@@ -96,12 +97,23 @@ public class Scooter {
 	 * (distance, range, etc)
 	 */
 	public void update() {
-		if(this.isMoving()) {
-			this.totalDistance += this.speed;
-			this.currentRental.setDistance(this.currentRental.getDistance() + this.speed);
-			this.distanceTraveled += this.speed;
-			this.remainingAutonomy -= this.speed;
-		} else if(this.isCharging()) {
+		if(this.remainingAutonomy > 0) {
+			if(this.isMoving()) {
+				this.totalDistance += this.speed;
+				this.currentRental.setDistance(this.currentRental.getDistance() + this.speed);
+				this.distanceTraveled += this.speed;
+				if(this.remainingAutonomy - this.speed >= 0) {
+					this.remainingAutonomy -= this.speed;
+				}else {
+					this.remainingAutonomy = 0;
+				}
+			}
+		}else {
+			this.stop();
+			//this.currentRental.terminate();
+		}
+		
+		if(this.isCharging()) {
 			if(this.remainingAutonomy < this.autonomy) {
 				if((this.remainingAutonomy + this.CHARGIN_SPEED) <= this.autonomy) {
 					this.remainingAutonomy += this.CHARGIN_SPEED;
