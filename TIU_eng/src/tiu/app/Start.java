@@ -58,7 +58,7 @@ public class Start {
 		central.addUser(u5);
 		
 		// TODO create scooters (DONE)
-		Scooter s1 = new Scooter( "PooTr1", 20000, 130 );
+		Scooter s1 = new Scooter( "PooTr1", 20000, 5 );
 		central.addScooter(s1);
 		Scooter s2 = new Scooter( "PooTr2", 20000, 5 );
 		central.addScooter(s2);
@@ -68,7 +68,7 @@ public class Start {
 		central.addScooter(s4);
 		
 		
-		// TODO setup remaining range for the scooters (We don't know what to do exactly!)
+		// TODO setup remaining range for the scooters (DONE)
 		s1.setRemainingAutonomy(400);
 		s2.setRemainingAutonomy(20000);
 		s3.setRemainingAutonomy(8000);
